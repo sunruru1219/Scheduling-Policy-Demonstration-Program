@@ -75,5 +75,5 @@ Thread 0 is running
     * **Thread 3 (FIFO, Prio 30)** will completely preempt other threads and finish its execution first.
     * **Thread 1 (FIFO, Prio 10)** will run after Thread 3 finishes.
     * **Thread 0 & Thread 2 (NORMAL)** both experience CPU starvation initially.
-       * Once all real-time threads complete, the Linux CFS scheduler shares the CPU time between these two normal threads.
-       * The standard time-slicing mechanism results in the alternating `2 -> 0 -> 2 -> 0` output patterns.
+       * Once all real-time threads complete, the remaining NORMAL threads can compete for CPU time under Linux's normal scheduling policy.
+       * Results in the alternating `2 -> 0 -> 2 -> 0 -> 2 -> 0` output patterns.
